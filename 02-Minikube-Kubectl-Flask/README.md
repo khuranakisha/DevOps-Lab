@@ -100,6 +100,18 @@ Response: `Hello from Flask on Kubernetes!`
 - `targetPort` is the port the container listens on.
 - Here both are 15000, so traffic flows: client, Service port 15000, container port 15000.
 
+## Questions and Answers
+1. **Purpose of `minikube service flask-app-service --url`?** It prints the URL for reaching the service running in Minikube.
+2. **What happens when it runs?** Minikube checks that the service exists and is exposed, sets up access to it and prints a URL.
+3. **Why is `targetPort` used in the Service?** It is the port the container listens on.
+4. **`port` vs `targetPort`?** `port` is the port the Service exposes; `targetPort` is the container's port.
+5. **How do you access the Flask app in Minikube?** Run `minikube service <service-name> --url` and use the printed URL.
+6. **Why must the terminal stay open with the Docker driver?** The command keeps the tunnel to the cluster running; closing it breaks the URL.
+7. **Benefit of `--url`?** It gives the address directly, without building it by hand or opening a browser.
+8. **Command to expose a service?** `kubectl expose`, or `kubectl apply -f <service.yaml>`.
+9. **How does Minikube help local testing?** It runs a single-node Kubernetes cluster on the laptop, so deployments can be tested without a full cluster.
+10. **Role of `kubectl`?** It is the command-line tool for deploying, scaling and managing resources in the cluster.
+
 ## Key Learnings
 - A **Deployment** keeps the desired number of Pods running and manages updates.
 - A Pod is not reachable from outside the cluster until a **Service** exposes it.

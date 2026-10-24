@@ -77,7 +77,7 @@ docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 ![Plugins installing](screenshots/05-plugins-installing.png)
 
 ### 5. Create the first admin user and set the instance configuration
-![Create admin user](screenshots/06-create-admin-user.png)
+![Admin user created (Manage Jenkins > Users)](screenshots/06-admin-user-created.png)
 ![Instance configuration](screenshots/07-instance-configuration.png)
 
 ### 6. Jenkins is ready

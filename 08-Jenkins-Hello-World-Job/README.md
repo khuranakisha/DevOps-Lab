@@ -51,7 +51,7 @@ echo "Hello, Jenkins!"
 ### 4. Create a Freestyle project
 In Jenkins: **New Item**, name `HelloWorld`, type **Freestyle project**. Description: `Hello World! Jenkins job.` Source Code Management is set to **Git** with the repository URL `https://github.com/khuranakisha/devops-sample-code.git` and branch `*/main`.
 
-![Description and Git configuration](screenshots/03-jenkins-description-and-git.png)
+![Git repository URL and branch](screenshots/03-jenkins-description-and-git.png)
 
 ### 5. Add the build step
 **Build Steps > Add build step > Execute shell**, with the command:

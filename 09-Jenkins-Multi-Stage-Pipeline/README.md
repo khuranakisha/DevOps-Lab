@@ -57,10 +57,11 @@ Build #1 failed because the Jenkins container has no Python: `python3: not found
 
 ### 5. Fix: install Python in the Jenkins container
 ```bash
-docker exec -it -u root jenkins bash
-apt-get update
-apt-get install -y python3 python3-pip python3-venv python3-flask
+docker exec -u root jenkins apt-get update
+docker exec -u root jenkins apt-get install -y python3 python3-pip python3-venv python3-flask
+docker exec jenkins python3 --version
 ```
+The manual opens a root shell in the container (`docker exec -it -u root jenkins bash`) and runs the `apt` commands inside it; running them with `docker exec` is the same. The packages were installed before build #2. The screenshot is from running the same commands again to confirm: `apt` reports the packages as already installed.
 ![Install Python in Jenkins](screenshots/04-install-python-in-jenkins.png)
 
 ### 6. Run the pipeline again
