@@ -70,6 +70,12 @@ docker ps
 
 ![Grafana dashboard](screenshots/05-grafana-dashboard.png)
 
+**Prometheus query graphs** for the three metrics the manual lists (Prometheus, Graph tab):
+
+![Prometheus graph: total_deliveries](screenshots/11-prometheus-graph-total-deliveries.png)
+![Prometheus graph: pending_deliveries](screenshots/12-prometheus-graph-pending-deliveries.png)
+![Prometheus graph: average delivery time](screenshots/13-prometheus-graph-average-delivery-time.png)
+
 ### Step 4: Alerts
 `alert_rules.yml` defines two alerts:
 - `HighPendingDeliveries`: `pending_deliveries > 10` for 15 seconds (warning)
@@ -89,13 +95,17 @@ The pipeline started the application, Prometheus and Grafana containers:
 ### Step 6: Simulate alerts
 `pending_deliveries` was raised by changing the line in `delivery_metrics.py` to `pending = random.randint(50, 100)`. After restarting the script and Prometheus, `HighPendingDeliveries` fired.
 
+The change, as shown by `git diff`:
+
+![Code change for the alert simulation](screenshots/14-simulated-alerts-code-change.png)
+
 ![Alerts firing](screenshots/06-prometheus-alerts-firing.png)
 
 The file in this folder is the Step 1 version (`randint(10, 20)`); the change was reverted after the test.
 
 ## Expected Outputs Checklist
 1. Metrics endpoint at `http://localhost:8000/metrics`: done.
-2. Prometheus scraping the metrics: done (targets UP).
+2. Prometheus query graphs for `total_deliveries`, `pending_deliveries` and `average_delivery_time`: done (see the Prometheus query graphs above).
 3. Grafana dashboard with delivery metrics: done.
 4. Jenkins pipeline with a successful build and Docker command logs: done.
 5. Prometheus alerts for high pending deliveries: done.
