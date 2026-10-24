@@ -57,7 +57,7 @@ The nginx welcome page loaded in the browser, confirming that the Pod is running
 ## System Internal Details
 What happens inside Kubernetes when `kubectl run hello-k8s --image=nginx --port=80` is executed (diagram from Sunag's lab manual):
 
-![Kubernetes internals](https://raw.githubusercontent.com/SunagP/DevOps-Lab/main/Images/k8s-exercise-1.jpg)
+![Kubernetes internals](screenshots/k8s-internals-diagram.jpg)
 
 1. `kubectl` sends the request to the **kube-apiserver** over the REST API. The request describes the Pod: name `hello-k8s`, image `nginx`, container port 80.
 2. The API server stores the desired state, "a Pod called `hello-k8s` running nginx on port 80", in **etcd**.
